@@ -1,0 +1,10 @@
+.git
+.idea
+__pychache__
+.DS_Store
+bin/
+obj/
+/packages/
+*.user
+*.exe
+*.dll
