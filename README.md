@@ -13,7 +13,7 @@ Pythonを仲介することで、テクニカルアーティストやゲーム�
 [T4](https://docs.microsoft.com/ja-jp/visualstudio/modeling/code-generation-and-t4-text-templates?view=vs-2019) や [LLBLGen](https://www.llblgen.com/) を検討してください。
 
 
-### embeded Client on Lightweight Language for Programmer
+### embeded Client on Lightweight Language
 プログラマーがゲームクライアントを開発する上でPythonのような軽量スクリプト言語を組み込むと便利な機能に
 
 以下のようなものがあります。特に開発/保守期間の長いサービスを提供する上で工数削減を期待できます。
@@ -23,7 +23,7 @@ Pythonを仲介することで、テクニカルアーティストやゲーム�
 - 持続可能なサービスのための膨大なエンジン内アセットの継続的なメンテナンス
 
 
-### GameScript as the Asset for Artist
+### Sourcecode as the Asset
 アーティストがxml,csv,jsonあるいは独自ファイルフォーマットなどを仲介してComponent Entityを
 
 生成する用途に以下のようなものがあります。プログラマーの工数を割く必要なしにアセットの細かく挙動を制御する際に便利です。
@@ -33,11 +33,15 @@ Pythonを仲介することで、テクニカルアーティストやゲーム�
 - レベル : 地形、天候、草木
 - その他 : サンドボックス要素など
 
+### ライセンス
+[MIT](./License.md)
 
-#### [コード生成](http://blog.shos.info/archives/2013/11/csharp_metaprogramming.html)
+---
+
+#### コード生成
 従来のStringBuilderを含め、動的コード生成には以下のようなものがありますが、
 
-AOTや.NETの互換性を考慮して下記２つを採用しています。
+JITではなくAOTや.NETの互換性を考慮して下記２つを採用します。
 
 - [x] CodeDom (System.CodeDom)
 - [x] AssemblyBuilder (System.Reflection.Emit)
@@ -53,6 +57,3 @@ AOTや.NETの互換性を考慮して下記２つを採用しています。
 - [](http://blog.shos.info/archives/2013/11/csharp_metaprogramming.html)
 - [](https://ufcpp.net/study/csharp/misc_dynamic.html)
 - [](http://neue.cc/2017/12/04_560.html)
-
-### ライセンス
-[MIT](./License.md)
