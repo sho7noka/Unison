@@ -18,13 +18,21 @@ Pythonを仲介することで、テクニカルアーティストやゲーム�
 
 以下のようなものがあります。特に開発/保守期間の長いサービスを提供する上で工数削減を期待できます。
 
-- スコープを指定したオートゲームプレイとテスト(TCP/IP必要かな)
+- スコープを指定したエディターでのオートゲームプレイとテスト
 - アセット作成ツール(Maya, Photoshop等)とネイティブ相互作用
 - 持続可能なサービスのための膨大なエンジン内アセットの継続的なメンテナンス
 
+```c#
+using Python.Passing;
 
-### Sourcecode as the Asset
-アーティストがxml,csv,jsonあるいは独自ファイルフォーマットなどを仲介してComponent Entityを
+[PyDoc()]
+public static void Get(){
+
+}
+```
+
+### Sourcecode as a Asset
+アーティストが xml,csv,json あるいは独自ファイルフォーマットなどを仲介してComponent Entityを
 
 生成する用途に以下のようなものがあります。プログラマーの工数を割く必要なしにアセットの細かく挙動を制御する際に便利です。
 
@@ -32,6 +40,25 @@ Pythonを仲介することで、テクニカルアーティストやゲーム�
 - イベント : 物理エンジン/オーディオ/コリジョン
 - レベル : 地形、天候、草木
 - その他 : サンドボックス要素など
+
+```python
+import clr_ext.generate
+import clr_ext as clr
+clr_ext.generate.gen_cs()
+```
+
+https://docs.unity3d.com/Packages/com.unity.scripting.python@2.0/manual/
+https://forum.unity.com/threads/introducing-python-for-unity-editor.812748/
+
+Packages/manifest.json
+```json
+{
+  "dependencies": {
+    "com.unity.scripting.python": "2.0.1-preview.2",
+  }
+}
+```
+
 
 ### ライセンス
 [MIT](./License.md)

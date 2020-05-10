@@ -1,5 +1,5 @@
 from distutils.core import setup
-from clr_ext import PythonNetExtension, PythonNetBuild
+from clr_ext.build import PythonNetExtension, PythonNetBuild
 
 setup(
     name='Python.Passing',
