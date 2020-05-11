@@ -15,6 +15,31 @@ _template = """
 """
 
 
+def gen_console(code, file_name):
+    """
+    using System;
+    using Python.Runtime;
+
+    namespace ConsoleApplication
+    {
+        internal class Program
+        {
+            public static void Main(string[] args)
+            {
+                string[] cmd = Environment.GetCommandLineArgs();
+                PythonEngine.Initialize();
+
+                int i = Runtime.Py_Main(cmd.Length, cmd);
+                PythonEngine.Shutdown();
+
+                return i;
+            }
+        }
+    }
+    """
+    pass
+
+
 def gen_cs(code, file_name):
     """
 

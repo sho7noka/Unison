@@ -1,0 +1,744 @@
+Binary files pythonnet/.git/index and pythonnet_d/.git/index differ
+Only in pythonnet_d/.idea/.idea.pythonnet/.idea: .name
+diff -rc pythonnet/.idea/.idea.pythonnet/.idea/contentModel.xml pythonnet_d/.idea/.idea.pythonnet/.idea/contentModel.xml
+*** pythonnet/.idea/.idea.pythonnet/.idea/contentModel.xml	2020-04-27 12:18:54.000000000 +0900
+--- pythonnet_d/.idea/.idea.pythonnet/.idea/contentModel.xml	2020-04-27 16:14:07.000000000 +0900
+***************
+*** 2,8 ****
+  <project version="4">
+    <component name="ContentModelStore">
+      <e p="$PROJECT_DIR$/../Library/Caches/JetBrains/Rider2020.1/extResources" t="IncludeRecursive" />
+!     <e p="$PROJECT_DIR$/../Library/Caches/JetBrains/Rider2020.1/resharper-host/local/Transient/ReSharperHost/v201/SolutionCaches/_pythonnet.-950690213.00" t="ExcludeRecursive" />
+      <e p="$PROJECT_DIR$" t="IncludeFlat">
+        <e p="bin" t="Include">
+          <e p="Python.Runtime.dll" t="Include" />
+--- 2,8 ----
+  <project version="4">
+    <component name="ContentModelStore">
+      <e p="$PROJECT_DIR$/../Library/Caches/JetBrains/Rider2020.1/extResources" t="IncludeRecursive" />
+!     <e p="$PROJECT_DIR$/../Library/Caches/JetBrains/Rider2020.1/resharper-host/local/Transient/ReSharperHost/v201/SolutionCaches/_pythonnet.1718662400.00" t="ExcludeRecursive" />
+      <e p="$PROJECT_DIR$" t="IncludeFlat">
+        <e p="bin" t="Include">
+          <e p="Python.Runtime.dll" t="Include" />
+Binary files pythonnet/bin/Python.EmbeddingTest.dll and pythonnet_d/bin/Python.EmbeddingTest.dll differ
+Binary files pythonnet/bin/Python.Runtime.dll and pythonnet_d/bin/Python.Runtime.dll differ
+Binary files pythonnet/bin/nPython.exe and pythonnet_d/bin/nPython.exe differ
+Only in pythonnet_d/src/clrmodule/obj/x64/DebugMono: clrmodule.csproj.CoreCompileInputs.cache
+Binary files pythonnet/src/clrmodule/obj/x64/DebugMono/clrmodule.csprojAssemblyReference.cache and pythonnet_d/src/clrmodule/obj/x64/DebugMono/clrmodule.csprojAssemblyReference.cache differ
+Binary files pythonnet/src/console/bin/Python.Runtime.dll and pythonnet_d/src/console/bin/Python.Runtime.dll differ
+Binary files pythonnet/src/console/bin/Python.Runtime.pdb and pythonnet_d/src/console/bin/Python.Runtime.pdb differ
+diff -rc pythonnet/src/console/bin/Python.Runtime.xml pythonnet_d/src/console/bin/Python.Runtime.xml
+*** pythonnet/src/console/bin/Python.Runtime.xml	2020-04-27 14:46:10.000000000 +0900
+--- pythonnet_d/src/console/bin/Python.Runtime.xml	2020-04-27 16:14:12.000000000 +0900
+***************
+*** 817,823 ****
+              Implements __call__ for reflected delegate types.
+              </summary>
+          </member>
+!         <member name="M:Python.Runtime.DelegateObject.tp_richcompare(System.IntPtr,System.IntPtr,System.Int32)">
+              <summary>
+              Implements __cmp__ for reflected delegate types.
+              </summary>
+--- 817,823 ----
+              Implements __call__ for reflected delegate types.
+              </summary>
+          </member>
+!         <member name="M:Python.Runtime.DelegateObject.tp_compare(System.IntPtr,System.IntPtr)">
+              <summary>
+              Implements __cmp__ for reflected delegate types.
+              </summary>
+***************
+*** 3630,3654 ****
+              </summary>
+              <param name="ob">PyObject Ptr</param>
+          </member>
+-         <member name="M:Python.Runtime.Runtime.Py_CompileString(System.String,System.String,System.Int32)">
+-             <summary>
+-             Return value: New reference.
+-             This is a simplified interface to Py_CompileStringFlags() below, leaving flags set to NULL.
+-             </summary>
+-         </member>
+-         <member name="M:Python.Runtime.Runtime.Py_CompileStringFlags(System.String,System.String,System.Int32,System.IntPtr)">
+-             <summary>
+-             Return value: New reference.
+-             This is a simplified interface to Py_CompileStringExFlags() below, with optimize set to -1.
+-             </summary>
+-         </member>
+-         <member name="M:Python.Runtime.Runtime.Py_CompileStringExFlags(System.String,System.String,System.Int32,System.IntPtr,System.Int32)">
+-             <summary>
+-             Return value: New reference.
+-             Like Py_CompileStringObject(), but filename is a byte string decoded from the filesystem encoding(os.fsdecode()).
+-             </summary>
+-             <returns></returns>
+-         </member>
+          <member name="M:Python.Runtime.Runtime.PyObject_TYPE(System.IntPtr)">
+              <summary>
+              A macro-like method to get the type of a Python object. This is
+--- 3630,3635 ----
+Binary files pythonnet/src/console/bin/nPython.exe and pythonnet_d/src/console/bin/nPython.exe differ
+Binary files pythonnet/src/console/bin/nPython.pdb and pythonnet_d/src/console/bin/nPython.pdb differ
+Only in pythonnet_d/src/console/obj/x64/DebugMono: Console.csproj.CoreCompileInputs.cache
+diff -rc pythonnet/src/console/obj/x64/DebugMono/Console.csproj.FileListAbsolute.txt pythonnet_d/src/console/obj/x64/DebugMono/Console.csproj.FileListAbsolute.txt
+*** pythonnet/src/console/obj/x64/DebugMono/Console.csproj.FileListAbsolute.txt	2020-04-01 10:24:38.000000000 +0900
+--- pythonnet_d/src/console/obj/x64/DebugMono/Console.csproj.FileListAbsolute.txt	2020-04-27 16:14:16.000000000 +0900
+***************
+*** 8,10 ****
+--- 8,21 ----
+  /Users/shosumioka/pythonnet/src/console/obj/x64/DebugMono/Console.csproj.CopyComplete
+  /Users/shosumioka/pythonnet/src/console/obj/x64/DebugMono/nPython.exe
+  /Users/shosumioka/pythonnet/src/console/obj/x64/DebugMono/nPython.pdb
++ /Users/shosumioka/pythonnet_d/src/console/bin/nPython.xml
++ /Users/shosumioka/pythonnet_d/src/console/bin/nPython.exe
++ /Users/shosumioka/pythonnet_d/src/console/bin/nPython.pdb
++ /Users/shosumioka/pythonnet_d/src/console/bin/Python.Runtime.dll
++ /Users/shosumioka/pythonnet_d/src/console/bin/Python.Runtime.pdb
++ /Users/shosumioka/pythonnet_d/src/console/bin/Python.Runtime.xml
++ /Users/shosumioka/pythonnet_d/src/console/obj/x64/DebugMono/Console.csprojAssemblyReference.cache
++ /Users/shosumioka/pythonnet_d/src/console/obj/x64/DebugMono/Console.csproj.CoreCompileInputs.cache
++ /Users/shosumioka/pythonnet_d/src/console/obj/x64/DebugMono/Console.csproj.CopyComplete
++ /Users/shosumioka/pythonnet_d/src/console/obj/x64/DebugMono/nPython.exe
++ /Users/shosumioka/pythonnet_d/src/console/obj/x64/DebugMono/nPython.pdb
+Binary files pythonnet/src/console/obj/x64/DebugMono/nPython.exe and pythonnet_d/src/console/obj/x64/DebugMono/nPython.exe differ
+Binary files pythonnet/src/console/obj/x64/DebugMono/nPython.pdb and pythonnet_d/src/console/obj/x64/DebugMono/nPython.pdb differ
+Binary files pythonnet/src/embed_tests/bin/Python.EmbeddingTest.dll and pythonnet_d/src/embed_tests/bin/Python.EmbeddingTest.dll differ
+Binary files pythonnet/src/embed_tests/bin/Python.EmbeddingTest.pdb and pythonnet_d/src/embed_tests/bin/Python.EmbeddingTest.pdb differ
+Binary files pythonnet/src/embed_tests/bin/Python.Runtime.dll and pythonnet_d/src/embed_tests/bin/Python.Runtime.dll differ
+Binary files pythonnet/src/embed_tests/bin/Python.Runtime.pdb and pythonnet_d/src/embed_tests/bin/Python.Runtime.pdb differ
+diff -rc pythonnet/src/embed_tests/bin/Python.Runtime.xml pythonnet_d/src/embed_tests/bin/Python.Runtime.xml
+*** pythonnet/src/embed_tests/bin/Python.Runtime.xml	2020-04-27 14:46:10.000000000 +0900
+--- pythonnet_d/src/embed_tests/bin/Python.Runtime.xml	2020-04-27 16:14:12.000000000 +0900
+***************
+*** 817,823 ****
+              Implements __call__ for reflected delegate types.
+              </summary>
+          </member>
+!         <member name="M:Python.Runtime.DelegateObject.tp_richcompare(System.IntPtr,System.IntPtr,System.Int32)">
+              <summary>
+              Implements __cmp__ for reflected delegate types.
+              </summary>
+--- 817,823 ----
+              Implements __call__ for reflected delegate types.
+              </summary>
+          </member>
+!         <member name="M:Python.Runtime.DelegateObject.tp_compare(System.IntPtr,System.IntPtr)">
+              <summary>
+              Implements __cmp__ for reflected delegate types.
+              </summary>
+***************
+*** 3630,3654 ****
+              </summary>
+              <param name="ob">PyObject Ptr</param>
+          </member>
+-         <member name="M:Python.Runtime.Runtime.Py_CompileString(System.String,System.String,System.Int32)">
+-             <summary>
+-             Return value: New reference.
+-             This is a simplified interface to Py_CompileStringFlags() below, leaving flags set to NULL.
+-             </summary>
+-         </member>
+-         <member name="M:Python.Runtime.Runtime.Py_CompileStringFlags(System.String,System.String,System.Int32,System.IntPtr)">
+-             <summary>
+-             Return value: New reference.
+-             This is a simplified interface to Py_CompileStringExFlags() below, with optimize set to -1.
+-             </summary>
+-         </member>
+-         <member name="M:Python.Runtime.Runtime.Py_CompileStringExFlags(System.String,System.String,System.Int32,System.IntPtr,System.Int32)">
+-             <summary>
+-             Return value: New reference.
+-             Like Py_CompileStringObject(), but filename is a byte string decoded from the filesystem encoding(os.fsdecode()).
+-             </summary>
+-             <returns></returns>
+-         </member>
+          <member name="M:Python.Runtime.Runtime.PyObject_TYPE(System.IntPtr)">
+              <summary>
+              A macro-like method to get the type of a Python object. This is
+--- 3630,3635 ----
+Only in pythonnet_d/src/embed_tests/obj/x64/DebugMono: Python.EmbeddingTest.csproj.CoreCompileInputs.cache
+diff -rc pythonnet/src/embed_tests/obj/x64/DebugMono/Python.EmbeddingTest.csproj.FileListAbsolute.txt pythonnet_d/src/embed_tests/obj/x64/DebugMono/Python.EmbeddingTest.csproj.FileListAbsolute.txt
+*** pythonnet/src/embed_tests/obj/x64/DebugMono/Python.EmbeddingTest.csproj.FileListAbsolute.txt	2020-04-01 11:11:20.000000000 +0900
+--- pythonnet_d/src/embed_tests/obj/x64/DebugMono/Python.EmbeddingTest.csproj.FileListAbsolute.txt	2020-04-27 16:14:17.000000000 +0900
+***************
+*** 13,15 ****
+--- 13,31 ----
+  /Users/shosumioka/pythonnet/src/embed_tests/obj/x64/DebugMono/Python.EmbeddingTest.csproj.CopyComplete
+  /Users/shosumioka/pythonnet/src/embed_tests/obj/x64/DebugMono/Python.EmbeddingTest.dll
+  /Users/shosumioka/pythonnet/src/embed_tests/obj/x64/DebugMono/Python.EmbeddingTest.pdb
++ /Users/shosumioka/pythonnet_d/src/embed_tests/bin/Python.EmbeddingTest.xml
++ /Users/shosumioka/pythonnet_d/src/embed_tests/bin/Python.EmbeddingTest.dll
++ /Users/shosumioka/pythonnet_d/src/embed_tests/bin/Python.EmbeddingTest.pdb
++ /Users/shosumioka/pythonnet_d/src/embed_tests/bin/nunit.framework.dll
++ /Users/shosumioka/pythonnet_d/src/embed_tests/bin/Python.Runtime.dll
++ /Users/shosumioka/pythonnet_d/src/embed_tests/bin/System.ValueTuple.dll
++ /Users/shosumioka/pythonnet_d/src/embed_tests/bin/Python.Runtime.pdb
++ /Users/shosumioka/pythonnet_d/src/embed_tests/bin/Python.Runtime.xml
++ /Users/shosumioka/pythonnet_d/src/embed_tests/bin/nunit.framework.pdb
++ /Users/shosumioka/pythonnet_d/src/embed_tests/bin/nunit.framework.xml
++ /Users/shosumioka/pythonnet_d/src/embed_tests/bin/System.ValueTuple.xml
++ /Users/shosumioka/pythonnet_d/src/embed_tests/obj/x64/DebugMono/Python.EmbeddingTest.csprojAssemblyReference.cache
++ /Users/shosumioka/pythonnet_d/src/embed_tests/obj/x64/DebugMono/Python.EmbeddingTest.csproj.CoreCompileInputs.cache
++ /Users/shosumioka/pythonnet_d/src/embed_tests/obj/x64/DebugMono/Python.EmbeddingTest.csproj.CopyComplete
++ /Users/shosumioka/pythonnet_d/src/embed_tests/obj/x64/DebugMono/Python.EmbeddingTest.dll
++ /Users/shosumioka/pythonnet_d/src/embed_tests/obj/x64/DebugMono/Python.EmbeddingTest.pdb
+Binary files pythonnet/src/embed_tests/obj/x64/DebugMono/Python.EmbeddingTest.csprojAssemblyReference.cache and pythonnet_d/src/embed_tests/obj/x64/DebugMono/Python.EmbeddingTest.csprojAssemblyReference.cache differ
+Binary files pythonnet/src/embed_tests/obj/x64/DebugMono/Python.EmbeddingTest.dll and pythonnet_d/src/embed_tests/obj/x64/DebugMono/Python.EmbeddingTest.dll differ
+Binary files pythonnet/src/embed_tests/obj/x64/DebugMono/Python.EmbeddingTest.pdb and pythonnet_d/src/embed_tests/obj/x64/DebugMono/Python.EmbeddingTest.pdb differ
+diff -rc pythonnet/src/runtime/Python.Runtime.csproj pythonnet_d/src/runtime/Python.Runtime.csproj
+*** pythonnet/src/runtime/Python.Runtime.csproj	2020-04-27 14:26:57.000000000 +0900
+--- pythonnet_d/src/runtime/Python.Runtime.csproj	2020-04-27 16:13:49.000000000 +0900
+***************
+*** 1,183 ****
+! ﻿<?xml version="1.0" encoding="utf-8"?>
+! <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+!   <PropertyGroup>
+!     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+!     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+!     <ProjectGuid>{097B4AC0-74E9-4C58-BCF8-C69746EC8271}</ProjectGuid>
+!     <OutputType>Library</OutputType>
+!     <AssemblyName>Python.Runtime</AssemblyName>
+!     <RootNamespace>Python.Runtime</RootNamespace>
+!     <DocumentationFile>bin\Python.Runtime.xml</DocumentationFile>
+!     <OutputPath>bin\</OutputPath>
+!     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+!     <TargetFrameworkProfile />
+!     <NoWarn>1591</NoWarn>
+!     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+!     <PythonBuildDir Condition=" '$(PythonBuildDir)' == '' ">$(SolutionDir)\bin\</PythonBuildDir>
+!     <AppDesignerFolder>Properties</AppDesignerFolder>
+!     <LangVersion>7.3</LangVersion>
+!     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+!     <SignAssembly>false</SignAssembly>
+!     <AssemblyOriginatorKeyFile>..\pythonnet.snk</AssemblyOriginatorKeyFile>
+!   </PropertyGroup>
+!   <!--We can relax binding to platform because code references no any platform dependent assemblies-->
+!   <!--This will allows to use any build of this assebly as a compile ref assebly-->
+!   <!--<PropertyGroup Condition=" '$(Platform)' == 'x86'">
+!     <PlatformTarget>x86</PlatformTarget>
+!   </PropertyGroup>
+!   <PropertyGroup Condition=" '$(Platform)' == 'x64'">
+!     <PlatformTarget>x64</PlatformTarget>
+!   </PropertyGroup>-->
+!   <PropertyGroup Condition=" '$(Configuration)' == 'ReleaseMono'">
+!     <DefineConstants Condition="'$(DefineConstants)' == ''">PYTHON2;PYTHON27;UCS4</DefineConstants>
+!     <Optimize>true</Optimize>
+!     <DebugType>pdbonly</DebugType>
+!   </PropertyGroup>
+!   <PropertyGroup Condition=" '$(Configuration)' == 'ReleaseMonoPY3'">
+!     <DefineConstants Condition="'$(DefineConstants)' == ''">PYTHON3;PYTHON37;MONO_OSX;UCS4</DefineConstants>
+!     <Optimize>true</Optimize>
+!     <DebugType>pdbonly</DebugType>
+!   </PropertyGroup>
+!   <PropertyGroup Condition=" '$(Configuration)' == 'DebugMono'">
+!     <DebugSymbols>true</DebugSymbols>
+!     <DefineConstants Condition="'$(DefineConstants)' == ''">PYTHON2;PYTHON27;UCS4;TRACE;DEBUG</DefineConstants>
+!     <Optimize>false</Optimize>
+!     <DebugType>full</DebugType>
+!   </PropertyGroup>
+!   <PropertyGroup Condition=" '$(Configuration)' == 'DebugMonoPY3'">
+!     <DebugSymbols>true</DebugSymbols>
+!     <DefineConstants Condition="'$(DefineConstants)' == ''">PYTHON3;PYTHON37;MONO_OSX;UCS4;TRACE;DEBUG</DefineConstants>
+!     <Optimize>false</Optimize>
+!     <DebugType>full</DebugType>
+!   </PropertyGroup>
+!   <PropertyGroup Condition=" '$(Configuration)' == 'ReleaseWin'">
+!     <DefineConstants Condition="'$(DefineConstants)' == ''">PYTHON2;PYTHON27;UCS2</DefineConstants>
+!     <Optimize>true</Optimize>
+!     <DebugType>pdbonly</DebugType>
+!   </PropertyGroup>
+!   <PropertyGroup Condition=" '$(Configuration)' == 'ReleaseWinPY3'">
+!     <DefineConstants Condition="'$(DefineConstants)' == ''">PYTHON3;PYTHON37;UCS2</DefineConstants>
+!     <Optimize>true</Optimize>
+!     <DebugType>pdbonly</DebugType>
+!   </PropertyGroup>
+!   <PropertyGroup Condition=" '$(Configuration)' == 'DebugWin'">
+!     <DebugSymbols>true</DebugSymbols>
+!     <DefineConstants Condition="'$(DefineConstants)' == ''">PYTHON2;PYTHON27;UCS2;TRACE;DEBUG</DefineConstants>
+!     <Optimize>false</Optimize>
+!     <DebugType>full</DebugType>
+!   </PropertyGroup>
+!   <PropertyGroup Condition=" '$(Configuration)' == 'DebugWinPY3'">
+!     <DebugSymbols>true</DebugSymbols>
+!     <DefineConstants Condition="'$(DefineConstants)' == ''">PYTHON3;PYTHON37;UCS2;TRACE;DEBUG</DefineConstants>
+!     <Optimize>false</Optimize>
+!     <DebugType>full</DebugType>
+!   </PropertyGroup>
+!   <ItemGroup>
+!     <Reference Include="System" />
+!   </ItemGroup>
+!   <ItemGroup>
+!     <Compile Include="Codecs\EncoderGroup.cs" />
+!     <Compile Include="Codecs\DecoderGroup.cs" />
+!     <Compile Include="Codecs\TupleCodecs.cs" />
+!     <Compile Include="converterextensions.cs" />
+!     <Compile Include="finalizer.cs" />
+!     <Compile Include="Properties\AssemblyInfo.cs" />
+!     <Compile Include="..\SharedAssemblyInfo.cs">
+!       <Link>Properties\SharedAssemblyInfo.cs</Link>
+!     </Compile>
+!     <Compile Include="arrayobject.cs" />
+!     <Compile Include="assemblymanager.cs" />
+!     <Compile Include="BorrowedReference.cs" />
+!     <Compile Include="classderived.cs" />
+!     <Compile Include="classbase.cs" />
+!     <Compile Include="classmanager.cs" />
+!     <Compile Include="classobject.cs" />
+!     <Compile Include="clrobject.cs" />
+!     <Compile Include="codegenerator.cs" />
+!     <Compile Include="constructorbinder.cs" />
+!     <Compile Include="constructorbinding.cs" />
+!     <Compile Include="converter.cs" />
+!     <Compile Include="CustomMarshaler.cs" />
+!     <Compile Include="debughelper.cs" />
+!     <Compile Include="delegatemanager.cs" />
+!     <Compile Include="delegateobject.cs" />
+!     <Compile Include="eventbinding.cs" />
+!     <Compile Include="eventobject.cs" />
+!     <Compile Include="exceptions.cs" />
+!     <Compile Include="extensiontype.cs" />
+!     <Compile Include="fieldobject.cs" />
+!     <Compile Include="generictype.cs" />
+!     <Compile Include="genericutil.cs" />
+!     <Compile Include="importhook.cs" />
+!     <Compile Include="indexer.cs" />
+!     <Compile Include="interfaceobject.cs" />
+!     <Compile Include="interfaces.cs" />
+!     <Compile Include="interop.cs" />
+!     <Compile Include="iterator.cs" />
+!     <Compile Include="managedtype.cs" />
+!     <Compile Include="metatype.cs" />
+!     <Compile Include="methodbinder.cs" />
+!     <Compile Include="methodbinding.cs" />
+!     <Compile Include="methodobject.cs" />
+!     <Compile Include="methodwrapper.cs" />
+!     <Compile Include="modulefunctionobject.cs" />
+!     <Compile Include="moduleobject.cs" />
+!     <Compile Include="modulepropertyobject.cs" />
+!     <Compile Include="nativecall.cs" />
+!     <Compile Include="NewReference.cs" />
+!     <Compile Include="NonCopyableAttribute.cs" />
+!     <Compile Include="overload.cs" />
+!     <Compile Include="propertyobject.cs" />
+!     <Compile Include="pyansistring.cs" />
+!     <Compile Include="pydict.cs" />
+!     <Compile Include="pyfloat.cs" />
+!     <Compile Include="pyint.cs" />
+!     <Compile Include="pyiter.cs" />
+!     <Compile Include="pylist.cs" />
+!     <Compile Include="pylong.cs" />
+!     <Compile Include="pynumber.cs" />
+!     <Compile Include="pyobject.cs" />
+!     <Compile Include="pyscope.cs" />
+!     <Compile Include="pysequence.cs" />
+!     <Compile Include="pystring.cs" />
+!     <Compile Include="pythonengine.cs" />
+!     <Compile Include="pythonexception.cs" />
+!     <Compile Include="pytuple.cs" />
+!     <Compile Include="ReferenceExtensions.cs" />
+!     <Compile Include="runtime.cs" />
+!     <Compile Include="typemanager.cs" />
+!     <Compile Include="typemethod.cs" />
+!     <Compile Include="Util.cs" />
+!     <Compile Include="platform\Types.cs" />
+!     <Compile Include="platform\LibraryLoader.cs" />
+!     <Compile Include="slots\mp_length.cs" />
+!   </ItemGroup>
+!   <ItemGroup Condition=" '$(PythonInteropFile)' != '' ">
+!     <Compile Include="$(PythonInteropFile)" />
+!   </ItemGroup>
+!   <ItemGroup Condition=" '$(PythonInteropFile)' == '' ">
+!     <Compile Include="interop27.cs" />
+!     <Compile Include="interop34.cs" />
+!     <Compile Include="interop35.cs" />
+!     <Compile Include="interop36.cs" />
+!     <Compile Include="interop37.cs" />
+!     <Compile Include="interop38.cs" />
+!   </ItemGroup>
+!   <ItemGroup>
+!     <None Include="..\pythonnet.snk" />
+!   </ItemGroup>
+!   <ItemGroup>
+!     <EmbeddedResource Include="resources\clr.py">
+!       <LogicalName>clr.py</LogicalName>
+!     </EmbeddedResource>
+!   </ItemGroup>
+!   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
+!   <PropertyGroup>
+!     <TargetAssembly>$(TargetPath)</TargetAssembly>
+!     <TargetAssemblyPdb>$(TargetDir)$(TargetName).pdb</TargetAssemblyPdb>
+!   </PropertyGroup>
+!   <Target Name="AfterBuild">
+!     <Copy SourceFiles="$(TargetAssembly)" DestinationFolder="$(PythonBuildDir)" />
+!     <!--Copy SourceFiles="$(TargetAssemblyPdb)" Condition="Exists('$(TargetAssemblyPdb)')" DestinationFolder="$(PythonBuildDir)" /-->
+!   </Target>
+! </Project>
+--- 1,183 ----
+! ﻿<?xml version="1.0" encoding="utf-8"?>
+! <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+!   <PropertyGroup>
+!     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+!     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+!     <ProjectGuid>{097B4AC0-74E9-4C58-BCF8-C69746EC8271}</ProjectGuid>
+!     <OutputType>Library</OutputType>
+!     <AssemblyName>Python.Runtime</AssemblyName>
+!     <RootNamespace>Python.Runtime</RootNamespace>
+!     <DocumentationFile>bin\Python.Runtime.xml</DocumentationFile>
+!     <OutputPath>bin\</OutputPath>
+!     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+!     <TargetFrameworkProfile />
+!     <NoWarn>1591</NoWarn>
+!     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+!     <PythonBuildDir Condition=" '$(PythonBuildDir)' == '' ">$(SolutionDir)\bin\</PythonBuildDir>
+!     <AppDesignerFolder>Properties</AppDesignerFolder>
+!     <LangVersion>7.3</LangVersion>
+!     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+!     <SignAssembly>false</SignAssembly>
+!     <AssemblyOriginatorKeyFile>..\pythonnet.snk</AssemblyOriginatorKeyFile>
+!   </PropertyGroup>
+!   <!--We can relax binding to platform because code references no any platform dependent assemblies-->
+!   <!--This will allows to use any build of this assebly as a compile ref assebly-->
+!   <!--<PropertyGroup Condition=" '$(Platform)' == 'x86'">
+!     <PlatformTarget>x86</PlatformTarget>
+!   </PropertyGroup>
+!   <PropertyGroup Condition=" '$(Platform)' == 'x64'">
+!     <PlatformTarget>x64</PlatformTarget>
+!   </PropertyGroup>-->
+!   <PropertyGroup Condition=" '$(Configuration)' == 'ReleaseMono'">
+!     <DefineConstants Condition="'$(DefineConstants)' == ''">PYTHON2;PYTHON27;UCS4</DefineConstants>
+!     <Optimize>true</Optimize>
+!     <DebugType>pdbonly</DebugType>
+!   </PropertyGroup>
+!   <PropertyGroup Condition=" '$(Configuration)' == 'ReleaseMonoPY3'">
+!     <DefineConstants Condition="'$(DefineConstants)' == ''">PYTHON3;PYTHON38;UCS4</DefineConstants>
+!     <Optimize>true</Optimize>
+!     <DebugType>pdbonly</DebugType>
+!   </PropertyGroup>
+!   <PropertyGroup Condition=" '$(Configuration)' == 'DebugMono'">
+!     <DebugSymbols>true</DebugSymbols>
+!     <DefineConstants Condition="'$(DefineConstants)' == ''">PYTHON2;PYTHON27;UCS4;TRACE;DEBUG</DefineConstants>
+!     <Optimize>false</Optimize>
+!     <DebugType>full</DebugType>
+!   </PropertyGroup>
+!   <PropertyGroup Condition=" '$(Configuration)' == 'DebugMonoPY3'">
+!     <DebugSymbols>true</DebugSymbols>
+!     <DefineConstants Condition="'$(DefineConstants)' == ''">PYTHON3;PYTHON38;UCS4;TRACE;DEBUG</DefineConstants>
+!     <Optimize>false</Optimize>
+!     <DebugType>full</DebugType>
+!   </PropertyGroup>
+!   <PropertyGroup Condition=" '$(Configuration)' == 'ReleaseWin'">
+!     <DefineConstants Condition="'$(DefineConstants)' == ''">PYTHON2;PYTHON27;UCS2</DefineConstants>
+!     <Optimize>true</Optimize>
+!     <DebugType>pdbonly</DebugType>
+!   </PropertyGroup>
+!   <PropertyGroup Condition=" '$(Configuration)' == 'ReleaseWinPY3'">
+!     <DefineConstants Condition="'$(DefineConstants)' == ''">PYTHON3;PYTHON38;UCS2</DefineConstants>
+!     <Optimize>true</Optimize>
+!     <DebugType>pdbonly</DebugType>
+!   </PropertyGroup>
+!   <PropertyGroup Condition=" '$(Configuration)' == 'DebugWin'">
+!     <DebugSymbols>true</DebugSymbols>
+!     <DefineConstants Condition="'$(DefineConstants)' == ''">PYTHON2;PYTHON27;UCS2;TRACE;DEBUG</DefineConstants>
+!     <Optimize>false</Optimize>
+!     <DebugType>full</DebugType>
+!   </PropertyGroup>
+!   <PropertyGroup Condition=" '$(Configuration)' == 'DebugWinPY3'">
+!     <DebugSymbols>true</DebugSymbols>
+!     <DefineConstants Condition="'$(DefineConstants)' == ''">PYTHON3;PYTHON38;UCS2;TRACE;DEBUG</DefineConstants>
+!     <Optimize>false</Optimize>
+!     <DebugType>full</DebugType>
+!   </PropertyGroup>
+!   <ItemGroup>
+!     <Reference Include="System" />
+!   </ItemGroup>
+!   <ItemGroup>
+!     <Compile Include="Codecs\EncoderGroup.cs" />
+!     <Compile Include="Codecs\DecoderGroup.cs" />
+!     <Compile Include="Codecs\TupleCodecs.cs" />
+!     <Compile Include="converterextensions.cs" />
+!     <Compile Include="finalizer.cs" />
+!     <Compile Include="Properties\AssemblyInfo.cs" />
+!     <Compile Include="..\SharedAssemblyInfo.cs">
+!       <Link>Properties\SharedAssemblyInfo.cs</Link>
+!     </Compile>
+!     <Compile Include="arrayobject.cs" />
+!     <Compile Include="assemblymanager.cs" />
+!     <Compile Include="BorrowedReference.cs" />
+!     <Compile Include="classderived.cs" />
+!     <Compile Include="classbase.cs" />
+!     <Compile Include="classmanager.cs" />
+!     <Compile Include="classobject.cs" />
+!     <Compile Include="clrobject.cs" />
+!     <Compile Include="codegenerator.cs" />
+!     <Compile Include="constructorbinder.cs" />
+!     <Compile Include="constructorbinding.cs" />
+!     <Compile Include="converter.cs" />
+!     <Compile Include="CustomMarshaler.cs" />
+!     <Compile Include="debughelper.cs" />
+!     <Compile Include="delegatemanager.cs" />
+!     <Compile Include="delegateobject.cs" />
+!     <Compile Include="eventbinding.cs" />
+!     <Compile Include="eventobject.cs" />
+!     <Compile Include="exceptions.cs" />
+!     <Compile Include="extensiontype.cs" />
+!     <Compile Include="fieldobject.cs" />
+!     <Compile Include="generictype.cs" />
+!     <Compile Include="genericutil.cs" />
+!     <Compile Include="importhook.cs" />
+!     <Compile Include="indexer.cs" />
+!     <Compile Include="interfaceobject.cs" />
+!     <Compile Include="interfaces.cs" />
+!     <Compile Include="interop.cs" />
+!     <Compile Include="iterator.cs" />
+!     <Compile Include="managedtype.cs" />
+!     <Compile Include="metatype.cs" />
+!     <Compile Include="methodbinder.cs" />
+!     <Compile Include="methodbinding.cs" />
+!     <Compile Include="methodobject.cs" />
+!     <Compile Include="methodwrapper.cs" />
+!     <Compile Include="modulefunctionobject.cs" />
+!     <Compile Include="moduleobject.cs" />
+!     <Compile Include="modulepropertyobject.cs" />
+!     <Compile Include="nativecall.cs" />
+!     <Compile Include="NewReference.cs" />
+!     <Compile Include="NonCopyableAttribute.cs" />
+!     <Compile Include="overload.cs" />
+!     <Compile Include="propertyobject.cs" />
+!     <Compile Include="pyansistring.cs" />
+!     <Compile Include="pydict.cs" />
+!     <Compile Include="pyfloat.cs" />
+!     <Compile Include="pyint.cs" />
+!     <Compile Include="pyiter.cs" />
+!     <Compile Include="pylist.cs" />
+!     <Compile Include="pylong.cs" />
+!     <Compile Include="pynumber.cs" />
+!     <Compile Include="pyobject.cs" />
+!     <Compile Include="pyscope.cs" />
+!     <Compile Include="pysequence.cs" />
+!     <Compile Include="pystring.cs" />
+!     <Compile Include="pythonengine.cs" />
+!     <Compile Include="pythonexception.cs" />
+!     <Compile Include="pytuple.cs" />
+!     <Compile Include="ReferenceExtensions.cs" />
+!     <Compile Include="runtime.cs" />
+!     <Compile Include="typemanager.cs" />
+!     <Compile Include="typemethod.cs" />
+!     <Compile Include="Util.cs" />
+!     <Compile Include="platform\Types.cs" />
+!     <Compile Include="platform\LibraryLoader.cs" />
+!     <Compile Include="slots\mp_length.cs" />
+!   </ItemGroup>
+!   <ItemGroup Condition=" '$(PythonInteropFile)' != '' ">
+!     <Compile Include="$(PythonInteropFile)" />
+!   </ItemGroup>
+!   <ItemGroup Condition=" '$(PythonInteropFile)' == '' ">
+!     <Compile Include="interop27.cs" />
+!     <Compile Include="interop34.cs" />
+!     <Compile Include="interop35.cs" />
+!     <Compile Include="interop36.cs" />
+!     <Compile Include="interop37.cs" />
+!     <Compile Include="interop38.cs" />
+!   </ItemGroup>
+!   <ItemGroup>
+!     <None Include="..\pythonnet.snk" />
+!   </ItemGroup>
+!   <ItemGroup>
+!     <EmbeddedResource Include="resources\clr.py">
+!       <LogicalName>clr.py</LogicalName>
+!     </EmbeddedResource>
+!   </ItemGroup>
+!   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
+!   <PropertyGroup>
+!     <TargetAssembly>$(TargetPath)</TargetAssembly>
+!     <TargetAssemblyPdb>$(TargetDir)$(TargetName).pdb</TargetAssemblyPdb>
+!   </PropertyGroup>
+!   <Target Name="AfterBuild">
+!     <Copy SourceFiles="$(TargetAssembly)" DestinationFolder="$(PythonBuildDir)" />
+!     <!--Copy SourceFiles="$(TargetAssemblyPdb)" Condition="Exists('$(TargetAssemblyPdb)')" DestinationFolder="$(PythonBuildDir)" /-->
+!   </Target>
+! </Project>
+\ No newline at end of file
+Binary files pythonnet/src/runtime/bin/Python.Runtime.dll and pythonnet_d/src/runtime/bin/Python.Runtime.dll differ
+Binary files pythonnet/src/runtime/bin/Python.Runtime.pdb and pythonnet_d/src/runtime/bin/Python.Runtime.pdb differ
+diff -rc pythonnet/src/runtime/bin/Python.Runtime.xml pythonnet_d/src/runtime/bin/Python.Runtime.xml
+*** pythonnet/src/runtime/bin/Python.Runtime.xml	2020-04-27 14:46:10.000000000 +0900
+--- pythonnet_d/src/runtime/bin/Python.Runtime.xml	2020-04-27 16:14:12.000000000 +0900
+***************
+*** 817,823 ****
+              Implements __call__ for reflected delegate types.
+              </summary>
+          </member>
+!         <member name="M:Python.Runtime.DelegateObject.tp_richcompare(System.IntPtr,System.IntPtr,System.Int32)">
+              <summary>
+              Implements __cmp__ for reflected delegate types.
+              </summary>
+--- 817,823 ----
+              Implements __call__ for reflected delegate types.
+              </summary>
+          </member>
+!         <member name="M:Python.Runtime.DelegateObject.tp_compare(System.IntPtr,System.IntPtr)">
+              <summary>
+              Implements __cmp__ for reflected delegate types.
+              </summary>
+***************
+*** 3630,3654 ****
+              </summary>
+              <param name="ob">PyObject Ptr</param>
+          </member>
+-         <member name="M:Python.Runtime.Runtime.Py_CompileString(System.String,System.String,System.Int32)">
+-             <summary>
+-             Return value: New reference.
+-             This is a simplified interface to Py_CompileStringFlags() below, leaving flags set to NULL.
+-             </summary>
+-         </member>
+-         <member name="M:Python.Runtime.Runtime.Py_CompileStringFlags(System.String,System.String,System.Int32,System.IntPtr)">
+-             <summary>
+-             Return value: New reference.
+-             This is a simplified interface to Py_CompileStringExFlags() below, with optimize set to -1.
+-             </summary>
+-         </member>
+-         <member name="M:Python.Runtime.Runtime.Py_CompileStringExFlags(System.String,System.String,System.Int32,System.IntPtr,System.Int32)">
+-             <summary>
+-             Return value: New reference.
+-             Like Py_CompileStringObject(), but filename is a byte string decoded from the filesystem encoding(os.fsdecode()).
+-             </summary>
+-             <returns></returns>
+-         </member>
+          <member name="M:Python.Runtime.Runtime.PyObject_TYPE(System.IntPtr)">
+              <summary>
+              A macro-like method to get the type of a Python object. This is
+--- 3630,3635 ----
+Only in pythonnet_d/src/runtime/obj/x64/DebugMono: Python.Runtime.csproj.CoreCompileInputs.cache
+diff -rc pythonnet/src/runtime/obj/x64/DebugMono/Python.Runtime.csproj.FileListAbsolute.txt pythonnet_d/src/runtime/obj/x64/DebugMono/Python.Runtime.csproj.FileListAbsolute.txt
+*** pythonnet/src/runtime/obj/x64/DebugMono/Python.Runtime.csproj.FileListAbsolute.txt	2020-04-01 10:24:37.000000000 +0900
+--- pythonnet_d/src/runtime/obj/x64/DebugMono/Python.Runtime.csproj.FileListAbsolute.txt	2020-04-27 16:14:13.000000000 +0900
+***************
+*** 4,6 ****
+--- 4,13 ----
+  /Users/shosumioka/pythonnet/src/runtime/obj/x64/DebugMono/Python.Runtime.csprojAssemblyReference.cache
+  /Users/shosumioka/pythonnet/src/runtime/obj/x64/DebugMono/Python.Runtime.dll
+  /Users/shosumioka/pythonnet/src/runtime/obj/x64/DebugMono/Python.Runtime.pdb
++ /Users/shosumioka/pythonnet_d/src/runtime/bin/Python.Runtime.xml
++ /Users/shosumioka/pythonnet_d/src/runtime/bin/Python.Runtime.dll
++ /Users/shosumioka/pythonnet_d/src/runtime/bin/Python.Runtime.pdb
++ /Users/shosumioka/pythonnet_d/src/runtime/obj/x64/DebugMono/Python.Runtime.csprojAssemblyReference.cache
++ /Users/shosumioka/pythonnet_d/src/runtime/obj/x64/DebugMono/Python.Runtime.csproj.CoreCompileInputs.cache
++ /Users/shosumioka/pythonnet_d/src/runtime/obj/x64/DebugMono/Python.Runtime.dll
++ /Users/shosumioka/pythonnet_d/src/runtime/obj/x64/DebugMono/Python.Runtime.pdb
+Binary files pythonnet/src/runtime/obj/x64/DebugMono/Python.Runtime.csprojAssemblyReference.cache and pythonnet_d/src/runtime/obj/x64/DebugMono/Python.Runtime.csprojAssemblyReference.cache differ
+Binary files pythonnet/src/runtime/obj/x64/DebugMono/Python.Runtime.dll and pythonnet_d/src/runtime/obj/x64/DebugMono/Python.Runtime.dll differ
+Binary files pythonnet/src/runtime/obj/x64/DebugMono/Python.Runtime.pdb and pythonnet_d/src/runtime/obj/x64/DebugMono/Python.Runtime.pdb differ
+diff -rc pythonnet/src/runtime/platform/LibraryLoader.cs pythonnet_d/src/runtime/platform/LibraryLoader.cs
+*** pythonnet/src/runtime/platform/LibraryLoader.cs	2020-04-27 14:46:05.000000000 +0900
+--- pythonnet_d/src/runtime/platform/LibraryLoader.cs	2020-04-27 16:13:49.000000000 +0900
+***************
+*** 111,117 ****
+  
+          public IntPtr Load(string dllToLoad)
+          {
+!             var filename = $"{dllToLoad}.dylib";
+              ClearError();
+              var res = dlopen(filename, RTLD_NOW | RTLD_GLOBAL);
+              if (res == IntPtr.Zero)
+--- 111,117 ----
+  
+          public IntPtr Load(string dllToLoad)
+          {
+!             var filename = $"lib{dllToLoad}.dylib";
+              ClearError();
+              var res = dlopen(filename, RTLD_NOW | RTLD_GLOBAL);
+              if (res == IntPtr.Zero)
+diff -rc pythonnet/src/runtime/runtime.cs pythonnet_d/src/runtime/runtime.cs
+*** pythonnet/src/runtime/runtime.cs	2020-04-27 14:44:46.000000000 +0900
+--- pythonnet_d/src/runtime/runtime.cs	2020-04-27 16:13:49.000000000 +0900
+***************
+*** 97,104 ****
+  #if PYTHON_WITHOUT_ENABLE_SHARED && !NETSTANDARD
+          internal const string _PythonDll = "__Internal";
+  #else
+!         // internal const string _PythonDll = dllBase + dllWithPyDebug + dllWithPyMalloc;
+!         internal const string _PythonDll = "/Library/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7";
+  #endif
+  
+          public static readonly int pyversionnumber = Convert.ToInt32(_pyver);
+--- 97,103 ----
+  #if PYTHON_WITHOUT_ENABLE_SHARED && !NETSTANDARD
+          internal const string _PythonDll = "__Internal";
+  #else
+!         internal const string _PythonDll = dllBase + dllWithPyDebug + dllWithPyMalloc;
+  #endif
+  
+          public static readonly int pyversionnumber = Convert.ToInt32(_pyver);
+Binary files pythonnet/src/testing/bin/Python.Runtime.dll and pythonnet_d/src/testing/bin/Python.Runtime.dll differ
+Binary files pythonnet/src/testing/bin/Python.Runtime.pdb and pythonnet_d/src/testing/bin/Python.Runtime.pdb differ
+diff -rc pythonnet/src/testing/bin/Python.Runtime.xml pythonnet_d/src/testing/bin/Python.Runtime.xml
+*** pythonnet/src/testing/bin/Python.Runtime.xml	2020-04-27 14:46:10.000000000 +0900
+--- pythonnet_d/src/testing/bin/Python.Runtime.xml	2020-04-27 16:14:12.000000000 +0900
+***************
+*** 817,823 ****
+              Implements __call__ for reflected delegate types.
+              </summary>
+          </member>
+!         <member name="M:Python.Runtime.DelegateObject.tp_richcompare(System.IntPtr,System.IntPtr,System.Int32)">
+              <summary>
+              Implements __cmp__ for reflected delegate types.
+              </summary>
+--- 817,823 ----
+              Implements __call__ for reflected delegate types.
+              </summary>
+          </member>
+!         <member name="M:Python.Runtime.DelegateObject.tp_compare(System.IntPtr,System.IntPtr)">
+              <summary>
+              Implements __cmp__ for reflected delegate types.
+              </summary>
+***************
+*** 3630,3654 ****
+              </summary>
+              <param name="ob">PyObject Ptr</param>
+          </member>
+-         <member name="M:Python.Runtime.Runtime.Py_CompileString(System.String,System.String,System.Int32)">
+-             <summary>
+-             Return value: New reference.
+-             This is a simplified interface to Py_CompileStringFlags() below, leaving flags set to NULL.
+-             </summary>
+-         </member>
+-         <member name="M:Python.Runtime.Runtime.Py_CompileStringFlags(System.String,System.String,System.Int32,System.IntPtr)">
+-             <summary>
+-             Return value: New reference.
+-             This is a simplified interface to Py_CompileStringExFlags() below, with optimize set to -1.
+-             </summary>
+-         </member>
+-         <member name="M:Python.Runtime.Runtime.Py_CompileStringExFlags(System.String,System.String,System.Int32,System.IntPtr,System.Int32)">
+-             <summary>
+-             Return value: New reference.
+-             Like Py_CompileStringObject(), but filename is a byte string decoded from the filesystem encoding(os.fsdecode()).
+-             </summary>
+-             <returns></returns>
+-         </member>
+          <member name="M:Python.Runtime.Runtime.PyObject_TYPE(System.IntPtr)">
+              <summary>
+              A macro-like method to get the type of a Python object. This is
+--- 3630,3635 ----
+Binary files pythonnet/src/testing/bin/Python.Test.dll and pythonnet_d/src/testing/bin/Python.Test.dll differ
+Binary files pythonnet/src/testing/bin/Python.Test.pdb and pythonnet_d/src/testing/bin/Python.Test.pdb differ
+Only in pythonnet_d/src/testing/obj/x64/DebugMono: Python.Test.csproj.CoreCompileInputs.cache
+diff -rc pythonnet/src/testing/obj/x64/DebugMono/Python.Test.csproj.FileListAbsolute.txt pythonnet_d/src/testing/obj/x64/DebugMono/Python.Test.csproj.FileListAbsolute.txt
+*** pythonnet/src/testing/obj/x64/DebugMono/Python.Test.csproj.FileListAbsolute.txt	2020-04-01 11:11:20.000000000 +0900
+--- pythonnet_d/src/testing/obj/x64/DebugMono/Python.Test.csproj.FileListAbsolute.txt	2020-04-27 16:14:15.000000000 +0900
+***************
+*** 8,10 ****
+--- 8,21 ----
+  /Users/shosumioka/pythonnet/src/testing/obj/x64/DebugMono/Python.Test.csproj.CopyComplete
+  /Users/shosumioka/pythonnet/src/testing/obj/x64/DebugMono/Python.Test.dll
+  /Users/shosumioka/pythonnet/src/testing/obj/x64/DebugMono/Python.Test.pdb
++ /Users/shosumioka/pythonnet_d/src/testing/bin/Python.Test.xml
++ /Users/shosumioka/pythonnet_d/src/testing/bin/Python.Test.dll
++ /Users/shosumioka/pythonnet_d/src/testing/bin/Python.Test.pdb
++ /Users/shosumioka/pythonnet_d/src/testing/bin/Python.Runtime.dll
++ /Users/shosumioka/pythonnet_d/src/testing/bin/Python.Runtime.pdb
++ /Users/shosumioka/pythonnet_d/src/testing/bin/Python.Runtime.xml
++ /Users/shosumioka/pythonnet_d/src/testing/obj/x64/DebugMono/Python.Test.csprojAssemblyReference.cache
++ /Users/shosumioka/pythonnet_d/src/testing/obj/x64/DebugMono/Python.Test.csproj.CoreCompileInputs.cache
++ /Users/shosumioka/pythonnet_d/src/testing/obj/x64/DebugMono/Python.Test.csproj.CopyComplete
++ /Users/shosumioka/pythonnet_d/src/testing/obj/x64/DebugMono/Python.Test.dll
++ /Users/shosumioka/pythonnet_d/src/testing/obj/x64/DebugMono/Python.Test.pdb
+Binary files pythonnet/src/testing/obj/x64/DebugMono/Python.Test.csprojAssemblyReference.cache and pythonnet_d/src/testing/obj/x64/DebugMono/Python.Test.csprojAssemblyReference.cache differ
+Binary files pythonnet/src/testing/obj/x64/DebugMono/Python.Test.dll and pythonnet_d/src/testing/obj/x64/DebugMono/Python.Test.dll differ
+Binary files pythonnet/src/testing/obj/x64/DebugMono/Python.Test.pdb and pythonnet_d/src/testing/obj/x64/DebugMono/Python.Test.pdb differ
+Binary files pythonnet/src/tests/fixtures/Python.Test.dll and pythonnet_d/src/tests/fixtures/Python.Test.dll differ
