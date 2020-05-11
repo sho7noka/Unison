@@ -23,7 +23,7 @@ jobs:
       - name: publish on version change
         uses: rohith/publish-nuget@v2
         with:
-          PROJECT_FILE_PATH: Passing/Passing.csproj # Relative to repository root
+          PROJECT_FILE_PATH: src/src.csproj # Relative to repository root
           # PACKAGE_NAME: NuGet package id, REQUIRED if it's different from project name
           # VERSION_FILE_PATH: Directory.Build.props # Relative to repository root, defaults to project file
           # VERSION_REGEX: <Version>(.*)<\/Version> # Regex pattern to extract version info in a capturing group

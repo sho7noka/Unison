@@ -2,9 +2,9 @@
 <package >
   <metadata>
     <id>Package</id>
-    <version>1.0.0</version>
-    <authors>shosumioka</authors>
-    <owners>shosumioka</owners>
+    <version>0.1.0</version>
+    <authors>sho7noka</authors>
+    <owners>sho7noka</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <projectUrl>http://project_url_here_or_delete_this_line/</projectUrl>
@@ -12,7 +12,7 @@
     <description>Package description</description>
     <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
     <copyright>Copyright 2020</copyright>
-    <tags>Tag1 Tag2</tags>
+    <tags>pythonnet unity godot</tags>
     <dependencies>
     </dependencies>
   </metadata>
