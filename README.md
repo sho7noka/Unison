@@ -84,3 +84,6 @@ JITではなくAOTや.NETの互換性を考慮して下記２つを採用しま�
 - [](http://blog.shos.info/archives/2013/11/csharp_metaprogramming.html)
 - [](https://ufcpp.net/study/csharp/misc_dynamic.html)
 - [](http://neue.cc/2017/12/04_560.html)
+
+https://docs.unity3d.com/Manual/CustomPackages.html
+https://docs.godotengine.org/ja/latest/tutorials/assetlib/uploading_to_assetlib.html
