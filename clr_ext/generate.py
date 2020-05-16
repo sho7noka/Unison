@@ -1,5 +1,5 @@
+# -*- coding: utf-8 -*-
 import clr
-
 from clr_ext import AddReference
 
 _template = """
@@ -15,7 +15,7 @@ _template = """
 """
 
 
-def gen_console(code, file_name):
+def gen_console_app(code, file_name):
     """
     using System;
     using Python.Runtime;
@@ -40,7 +40,7 @@ def gen_console(code, file_name):
     pass
 
 
-def gen_cs(code, file_name):
+def gen_charp(code, file_name):
     """
 
     Args:

@@ -1,23 +1,54 @@
 using System;
 using System.CodeDom;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
 
-#if UNITY
+// #if UNITY
 using UnityEngine;
 using UnityEditor;
-#elif GODOT
-using Godot;
-#endif
+
+// #elif GODOT
+// using Godot;
+// #endif
 
 namespace Python.Passing
 {
     /**
-     * TODO: レガシー
+     * <summary>
+     * 付与したメソッドは自動的にRPC
+     * </summary>
+     */
+    [AttributeUsage(AttributeTargets.Method, Inherited = false, AllowMultiple = true)]
+    public class PyRpcAttribute : Attribute
+    {
+        private string m_command;
+        private string m_description;
+
+        public string Command
+        {
+            get { return m_command; }
+        }
+
+        public string Description
+        {
+            get { return m_description; }
+        }
+
+        public PyRpcAttribute(string command, string description)
+        {
+            m_command = command;
+            m_description = description;
+        }
+    }
+
+    /**
+     * <summary>
      * 指定namespace.class以下を取得
      * https://mitosuya.net/execute-all-class-in-namespace
+     * </summary>
      */
     public class PythonNetBinder
     {
@@ -180,23 +211,54 @@ namespace Python.Passing
             }
         }
 
-#if UNITY_EDITOR
+// #if UNITY_EDITOR
         [MenuItem("Assets/Generate Sample Script")]
         public static void GenerateSampleScript()
         {
             // アセットのパスを作成
             var filePath = "Assets/GenerateTest/Sample.cs";
+
             var assetPath = AssetDatabase.GenerateUniqueAssetPath(filePath);
             EditorApplication.ExecuteMenuItem("");
-            AssetDatabase.ImportAsset();
+            AssetDatabase.ImportAsset(assetPath);
             AssetDatabase.Refresh();
         }
-#endif
+// #endif
 
-#if tool
-        // TCPポートを開く
+        public static void sss()
+        {
+            var assemblies = new HashSet<Assembly>
+            {
+                Assembly.GetAssembly(typeof(PythonNetBinder))
+            };
+            try
+            {
+                assemblies.Add(Assembly.Load("Assembly-CSharp"));
+            }
+            catch
+            {
+                
+            }
+            
+            foreach (var assembly in assemblies)
+            {
+                foreach (var type in assembly.GetExportedTypes())
+                {
+                    foreach (var method in type.GetMethods(
+                        BindingFlags.Static | BindingFlags.Public | BindingFlags.DeclaredOnly))
+                    {
+                        foreach (var attribute in method.GetCustomAttributes(typeof(PyRpcAttribute), false))
+                        {
+                            if (attribute is PyRpcAttribute consoleMethod)
+                                AddCommand(consoleMethod.Command, consoleMethod.Description, method);
+                        }
+                    }
+                }
+            }
+        }
         
-        // SDDebugger
-#endif
+        public static void AddCommand(string command, string description, Action method)
+        {
+        }
     }
 }
