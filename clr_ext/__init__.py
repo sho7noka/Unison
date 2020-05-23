@@ -1,9 +1,9 @@
 import platform
-from clr_ext import patch
+import clr_ext.patch as __patch
 
 if platform.platform() == "Windows":
-    AddReference = patch.AddReferenceUnManage
+    AddReference = __patch.AddReferenceUnManage
 else:
-    AddReference = patch.AddReferenceFrom
+    AddReference = __patch.AddReferenceFrom
 
-del platform, patch
+del platform, __patch
