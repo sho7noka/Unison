@@ -1,5 +1,5 @@
 Python.Passing is a python game programming solution for C# (Unity, Godot and .NET)
-extends for [pythonnet](http://pythonnet.github.io/).
+which extends for [pythonnet](http://pythonnet.github.io/).
 
 Copyright (c) 2020 sho7noka
 

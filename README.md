@@ -14,11 +14,11 @@ For more general uses of tables extracted from databases and spreadsheets, such 
 you can use Consider [T4](https://docs.microsoft.com/ja-jp/visualstudio/modeling/code-generation-and-t4-text-templates?view=vs-2019) or [LLBLGen](https://www.llblgen.com/).
 
 ## Installation
-1. [](https://docs.unity3d.com/Packages/com.unity.scripting.python@2.0/manual/)
+1. []
 2. [forum](https://forum.unity.com/threads/introducing-python-for-unity-editor.812748/)
 3. []
 
-Packages/manifest.json for Unity(optional).
+Packages/manifest.json for Unity(optional).[document](https://docs.unity3d.com/Packages/com.unity.scripting.python@2.0/manual/)
 ```json
 {
   "dependencies": {
@@ -60,7 +60,7 @@ public class EditorPresenter
 {
     [InitializeOnLoadMethod]
     void Start() {
-        InterPreter.rpcServer("121.0.0.1", 8888)
+        InterPreter.rpcServer("121.0.0.1", 8888);
     }
 }
 ```
@@ -71,18 +71,21 @@ import clr_ext as clr
 
 unity = clr.rpcClient("121.0.0.1", 8888)
 unity.Play()
+unity.update_scene()
 unity.Stop()
 ```
 
 ### Sourcecode as a Asset
 アーティストが xml,csv,json あるいは独自ファイルフォーマットなどを仲介してComponent Entityを
 
-生成する用途に以下のようなものがあります。プログラマーの工数を割く必要なしにアセットの細かい挙動を制御する際に便利です。
+生成するニーズには以下のようなものがあります。インターフェースの設計にもよりますが、プログラマーの工数が見込めない状況において
+
+アセットの細かい挙動を制御する際に便利です。
 
 - シェーダ : マテリアル/パーティクル
 - イベント : 物理エンジン/オーディオ/コリジョン
 - レベル : 地形、天候、草木
-- その他 : サンドボックス要素など
+- その他 : サンドボックス、ランタイムコマンドなど
 
 ```python
 import clr_ext.generate as gen

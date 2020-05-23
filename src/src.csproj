@@ -52,6 +52,7 @@
     <Compile Include="PythonNetBinder.cs" />
     <Compile Include="PyInterpreter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleTextEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Lib" />

@@ -4,6 +4,20 @@ using Python.Runtime;
 
 namespace Unison
 {
+    internal class Program
+    {
+        public static void Main(string[] args)
+        {
+            var cmd = Environment.GetCommandLineArgs();
+            // PyInterpreter.Set();
+
+            PythonEngine.Initialize();
+            var i = Runtime.Py_Main(cmd.Length, cmd);
+            PythonEngine.Shutdown();
+            return i;
+        }
+    }
+    
     public class PyInterpreter
     {
         private static dynamic client;
