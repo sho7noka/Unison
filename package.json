@@ -1,6 +1,6 @@
 {
-  "name": "com.sho7noka.pythonpassing",
-  "displayName": "Python.Passing is a python game programming solution for C# (Unity, Godot and .NET) extends for pythonnet.",
+  "name": "com.sho7noka.unison",
+  "displayName": "unison is a python game programming solution for C# (Unity, Godot and .NET) which extends for pythonnet.",
   "version": "0.1",
   "description": ""
 }

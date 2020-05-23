@@ -1,5 +1,7 @@
 .git
 .idea
+*.DotSettings
+src/src.csproj.DotSettings
 __pychache__
 .DS_Store
 bin/
