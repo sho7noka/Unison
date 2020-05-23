@@ -1,41 +1,50 @@
+using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using Python.Runtime;
 
-namespace Python.Passing
+namespace Unison.Extensions
 {
-    /**
-     * TODO: intelisense
-     * 
-     * <summary>
-     * Dynamic Member Lookup type for Python
-     * </summary>
-     *
-     * <code>
-     * py = new PyExpandoObject();
-     * py.sys.version_info
-     * py.my_value = true;
-     * </code>
-     */
-    class PyExpandoObject : DynamicObject
+    /// <summary>
+    /// 付与したメソッドは自動的にRPC
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Method, Inherited = false, AllowMultiple = true)]
+    public class PyRPCAttribute : Attribute
+    {
+        private readonly string m_command;
+        private readonly string m_description;
+
+        public string Command => m_command;
+
+        public string Description => m_description;
+
+        public PyRPCAttribute(string command, string description)
+        {
+            m_command = command;
+            m_description = description;
+        }
+    }
+
+    /// TODO: intelisense
+    /// 
+    /// <summary>
+    /// Dynamic Member Lookup type for Python
+    /// </summary>
+    ///
+    /// <code>
+    /// py = new PyExpandoObject();
+    /// py.sys.version_info
+    /// py.my_value = true;
+    /// </code>
+    public class PyExpandoObject : DynamicObject
     {
         private Dictionary<string, PyObject> sysModule;
-        
+
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {
-            try
-            {
-                dynamic module = Py.Import(binder.Name);
-                result = module;
-                return true;
-            }
-            catch (PythonException e)
-            {
-                // pip install binder.Name
-                throw;
-            }
-
-            return false;
+            dynamic module = Py.Import(binder.Name);
+            result = module;
+            return true;
         }
 
         public override bool TrySetMember(SetMemberBinder binder, object value)
