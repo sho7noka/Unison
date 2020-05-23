@@ -5,45 +5,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using Godot;
+using Python.Runtime;
+using Unison.Extensions;
 
-// #if UNITY
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
+#elif GODOT
+using Godot;
+#endif
 
-// #elif GODOT
-// using Godot;
-// #endif
-
-namespace Python.Passing
+namespace Unison
 {
-    /**
-     * <summary>
-     * 付与したメソッドは自動的にRPC
-     * </summary>
-     */
-    [AttributeUsage(AttributeTargets.Method, Inherited = false, AllowMultiple = true)]
-    public class PyRpcAttribute : Attribute
-    {
-        private string m_command;
-        private string m_description;
-
-        public string Command
-        {
-            get { return m_command; }
-        }
-
-        public string Description
-        {
-            get { return m_description; }
-        }
-
-        public PyRpcAttribute(string command, string description)
-        {
-            m_command = command;
-            m_description = description;
-        }
-    }
-
     /**
      * <summary>
      * 指定namespace.class以下を取得
@@ -67,26 +41,28 @@ namespace Python.Passing
 // ------------------------------------------------------------------------------
         ";
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="typeName"></param>
+        /// <returns></returns>
         public static PythonNetBinder Gen(Type typeName)
         {
             nameSpace = new CodeNamespace(name: "Client");
             var comment = new CodeCommentStatement(new CodeComment(_template));
             nameSpace.Comments.Add(comment);
-
             nameSpace.Imports.Add(new CodeNamespaceImport(nameSpace: "System"));
-#if GODOT
-            nameSpace.Imports.Add(new CodeNamespaceImport(nameSpace: "Godot"));
-#elif INHOUSE
-            nameSpace.Imports.Add(new CodeNamespaceImport(nameSpace: ""));
-#endif
 
-            // class Runtime {
+            
             var mainClass = new CodeTypeDeclaration(name: "Runtime");
 #if UNITY
             nameSpace.Imports.Add(new CodeNamespaceImport(nameSpace: "UnityEngine"));
-            nameSpace.Imports.Add(new CodeNamespaceImport(nameSpace: "UnityEditor"));
             mainClass.BaseTypes.Add(new CodeTypeReference(typeof(MonoBehaviour)));
+#elif GODOT
+            nameSpace.Imports.Add(new CodeNamespaceImport(nameSpace: "Godot"));
+            mainClass.BaseTypes.Add(new CodeTypeReference(typeof(Node)));
 #endif
+            
             var fields = typeName.GetFields(BindingFlags.GetField | BindingFlags.Public | BindingFlags.Instance);
             foreach (var field in fields)
             {
@@ -100,6 +76,7 @@ namespace Python.Passing
                 mainClass.Members.Add(variable);
             }
 
+            
             var methods = typeName.GetMethods(BindingFlags.Public | BindingFlags.NonPublic |
                                               BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly);
             foreach (var method in methods)
@@ -110,12 +87,6 @@ namespace Python.Passing
                     Attributes = MemberAttributes.Public | MemberAttributes.Final,
                     Name = method.Name
                 };
-                // var docString = "docstring";
-                // var docAttr = new CodeAttributeDeclaration(
-                //     "DocStringAttribute",
-                //     new CodeAttributeArgument(new CodePrimitiveExpression(true)));
-                // mainMethod.CustomAttributes.Add(docAttr);
-                // mainMethod.Comments.Add(new CodeCommentStatement(docString));
 
                 CodeExpression target;
                 if ((method.Attributes & MethodAttributes.Static) != 0)
@@ -123,9 +94,8 @@ namespace Python.Passing
                 else
                     target = new CodeObjectCreateExpression(typeName.FullName);
 
-                var invoke = new CodeMethodInvokeExpression( // 関数呼び出し式
-                    targetObject: target, // オブジェクト名: Console.
-                    methodName: method.Name // メソッド名    : WriteLine
+                var invoke = new CodeMethodInvokeExpression(
+                    targetObject: target, methodName: method.Name
                 );
 
                 foreach (var p in method.GetParameters())
@@ -146,6 +116,10 @@ namespace Python.Passing
             return new PythonNetBinder();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileName"></param>
         public void Compile(string fileName)
         {
             if (fileName.EndsWith(".cs"))
@@ -165,7 +139,7 @@ namespace Python.Passing
             codeCompileUnit.ReferencedAssemblies.Add("UnityEngine.dll");
             codeCompileUnit.ReferencedAssemblies.Add("UnityEditor.dll");
 #elif GODOT
-            codeCompileUnit.ReferencedAssemblies.Add("Godot.dll");
+            codeCompileUnit.ReferencedAssemblies.Add("GodotSharp.dll");
 #elif INHOUSE
             codeCompileUnit.ReferencedAssemblies.Add("");
 #endif
@@ -210,36 +184,68 @@ namespace Python.Passing
                 writer.Write(codeText);
             }
         }
+    }
+    
+    public class RPC
+    {
+        private static dynamic server;
 
-// #if UNITY_EDITOR
-        [MenuItem("Assets/Generate Sample Script")]
-        public static void GenerateSampleScript()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="port"></param>
+        public static void RpcServer(string address, int port)
         {
-            // アセットのパスを作成
-            var filePath = "Assets/GenerateTest/Sample.cs";
+            GetAttributes();
+            
+            using (Py.GIL())
+            {
+                try
+                {
+                    dynamic server = Py.Import("xmlrpc.server");
+                    var param = new PyObject[] {new PyString(address), new PyInt(port)};
+                    server = server.SimpleXMLRPCServer(
+                        new PyTuple(param), server.SimpleXMLRPCRequestHandler, false, true);
 
-            var assetPath = AssetDatabase.GenerateUniqueAssetPath(filePath);
-            EditorApplication.ExecuteMenuItem("");
-            AssetDatabase.ImportAsset(assetPath);
-            AssetDatabase.Refresh();
+                    foreach (var func in _functions)
+                    {
+                        server.register_function(func.Key, func.Value.ToPython());
+                    }
+
+                    server.register_multicall_functions();
+                    server.serve_forever();
+                }
+                catch (PythonException e)
+                {
+                    server.server_close();
+                    Console.WriteLine(e);
+                    throw;
+                }
+            }
         }
-// #endif
+        
+        static Dictionary<Action<string>, string> _functions = new Dictionary<Action<string>, string>();
 
-        public static void sss()
+        public static void Register(string command, string description, MethodInfo method)
+        {
+            Action<string> action;
+            
+            if (method.GetType() == typeof(PyObject))
+                action = (Action<string>) Delegate.CreateDelegate(typeof(Action<string>), method);
+            else
+                action = method as dynamic;
+            
+            _functions.Add(action, command);
+        }
+        
+        public static Dictionary<Action<string>, string> GetAttributes()
         {
             var assemblies = new HashSet<Assembly>
             {
-                Assembly.GetAssembly(typeof(PythonNetBinder))
+                Assembly.GetAssembly(typeof(PythonNetBinder)), Assembly.Load("Assembly-CSharp")
             };
-            try
-            {
-                assemblies.Add(Assembly.Load("Assembly-CSharp"));
-            }
-            catch
-            {
-                
-            }
-            
+
             foreach (var assembly in assemblies)
             {
                 foreach (var type in assembly.GetExportedTypes())
@@ -247,18 +253,18 @@ namespace Python.Passing
                     foreach (var method in type.GetMethods(
                         BindingFlags.Static | BindingFlags.Public | BindingFlags.DeclaredOnly))
                     {
-                        foreach (var attribute in method.GetCustomAttributes(typeof(PyRpcAttribute), false))
+                        foreach (var attribute in method.GetCustomAttributes(typeof(PyRPCAttribute), false))
                         {
-                            if (attribute is PyRpcAttribute consoleMethod)
-                                AddCommand(consoleMethod.Command, consoleMethod.Description, method);
+                            if (attribute is PyRPCAttribute consoleMethod)
+                            {    
+                                Register(consoleMethod.Command, consoleMethod.Description, method);
+                            }
                         }
                     }
                 }
             }
-        }
-        
-        public static void AddCommand(string command, string description, Action method)
-        {
+
+            return _functions;
         }
     }
 }

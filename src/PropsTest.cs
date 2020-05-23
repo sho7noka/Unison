@@ -1,4 +1,3 @@
-using System;   
 using UnityEngine;
 using Random = System.Random;
 
@@ -17,7 +16,7 @@ namespace DLLTest {
             var rand = new Random();
             return rand.Next(min, max);
         }
-
+        
         public float GetValue()
         {
             return c + Camera.VerticalToHorizontalFieldOfView(1, 1);
