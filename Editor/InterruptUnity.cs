@@ -1,8 +1,9 @@
-#if UNITY
+using System.Collections.Generic;
+
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.LowLevel;
-using System.Collections.Generic;
 using UnityEditor;
 
 // https://www.slideshare.net/UnityTechnologiesJapan/unity-111054310

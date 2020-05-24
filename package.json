@@ -1,6 +1,19 @@
 {
   "name": "com.sho7noka.unison",
-  "displayName": "unison is a python game programming solution for C# (Unity, Godot and .NET) which extends for pythonnet.",
-  "version": "0.1",
-  "description": ""
+  "version": "0.1.0",
+  "displayName": "Unison",
+  "description": "Unison is a python game development solution for C# (Unity, Godot and .NET)\nwhich extend on [pythonnet](http://pythonnet.github.io/).",
+  "unity": "2019.3",
+  "unityRelease": "0b5",
+  "keywords": [
+    "python",
+    "asset",
+    "bidirectional"
+  ],
+  "author": {
+    "name": "sho7noka",
+    "email": "shosumioka@gmail.com",
+    "url": "https://github.com/sho7noka/Unison.git"
+  },
+  "type": "tool"
 }
