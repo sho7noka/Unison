@@ -14,9 +14,9 @@ For more general uses of tables extracted from databases and spreadsheets, such 
 you can use Consider [T4](https://docs.microsoft.com/ja-jp/visualstudio/modeling/code-generation-and-t4-text-templates?view=vs-2019) or [LLBLGen](https://www.llblgen.com/).
 
 ## Installation
-1. []
-2. [forum](https://forum.unity.com/threads/introducing-python-for-unity-editor.812748/)
-3. []
+* pypi: `pip install clr_ext`
+* Package Manager : add the following line `https://github.com/yasirkula/UnityIngameDebugConsole.git`
+* nuget: `Install-Package python -Version 3.9.0-b1`
 
 Packages/manifest.json for Unity(optional).[document](https://docs.unity3d.com/Packages/com.unity.scripting.python@2.0/manual/)
 ```json
@@ -98,6 +98,9 @@ gen.gen_cs()
 - リフレクション、ジェネリックのコスト削減, AOT
 - データフォーマットのシリアライズ
 - ネイティブコードのデータバインド
+
+テンプレートを使ったコード生成。ASP.NET、XML Web サービス クライアント プロキシ、コード ウィザード、デザイナー、またはその他のコード出力機構のためのコードを生成します。
+動的コンパイル。1 つ以上の言語でのコードのコンパイルをサポートします。
 
 ゲーム制作におけるコード生成
 - アセットのランタイムパラメーター
