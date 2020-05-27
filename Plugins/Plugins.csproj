@@ -7,8 +7,8 @@
     <ProjectGuid>{E3C4D62B-84FB-4DCB-B792-42CA2CA29CEB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Python.Passing</RootNamespace>
-    <AssemblyName>Python.Passing</AssemblyName>
+    <RootNamespace>Unison</RootNamespace>
+    <AssemblyName>Unison</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,7 +20,7 @@
     <WarningLevel>4</WarningLevel>
     <OutputPath>bin\x64\Release\</OutputPath>
     <PlatformTarget>x64</PlatformTarget>
-    <DocumentationFile>bin\x64\Release\Python.Passing.xml</DocumentationFile>
+    <DocumentationFile>bin\x64\Release\Unison.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,7 +33,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
-    <DocumentationFile>bin\x64\Debug\Python.Passing.xml</DocumentationFile>
+    <DocumentationFile>bin\x64\Debug\Unison.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Python.Runtime, Version=2.4.1.0, Culture=neutral, PublicKeyToken=null">

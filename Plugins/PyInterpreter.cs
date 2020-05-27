@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using Python.Runtime;
 
 
@@ -6,7 +8,7 @@ namespace Unison
 {
     internal class Program
     {
-        public static void Main(string[] args)
+        public static int Main(string[] args)
         {
             var cmd = Environment.GetCommandLineArgs();
             // PyInterpreter.Set();
@@ -17,11 +19,11 @@ namespace Unison
             return i;
         }
     }
-    
+
     public class PyInterpreter
     {
         private static dynamic client;
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -54,6 +56,42 @@ namespace Unison
             PythonEngine.PythonHome = pathToVirtualEnv;
             PythonEngine.PythonPath =
                 Environment.GetEnvironmentVariable("PYTHONPATH", EnvironmentVariableTarget.Process);
+        }
+
+        private static List<string> GetExtraSitePackages()
+        {
+            var sitePackages = new List<string>();
+            {
+                var packageSitePackage = Path.GetFullPath("Packages/com.sho7noka.unison/clr_ext");
+                packageSitePackage = packageSitePackage.Replace("\\", "/");
+                sitePackages.Add(packageSitePackage);
+            }
+            
+            if (Directory.Exists("Assets/Python/site-packages"))
+            {
+                var projectSitePackages = Path.GetFullPath("Assets/Python/site-packages");
+                projectSitePackages = projectSitePackages.Replace("\\", "/");
+                sitePackages.Add(projectSitePackages);
+            }
+
+            return sitePackages;
+        }
+
+        private static void clr_ext()
+        {
+            dynamic builtins = PythonEngine.ImportModule("__builtin__");
+            // prepend to sys.path
+            dynamic sys = PythonEngine.ImportModule("sys");
+            dynamic syspath = sys.GetAttr("path");
+            dynamic sitePackages = GetExtraSitePackages();
+            dynamic pySitePackages = builtins.list();
+            foreach (var sitePackage in sitePackages)
+            {
+                pySitePackages.append(sitePackage);
+            }
+
+            pySitePackages += syspath;
+            sys.SetAttr("path", pySitePackages);
         }
     }
 }

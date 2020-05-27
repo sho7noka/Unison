@@ -10,6 +10,7 @@ using UnityEditor;
 // https://baba-s.hatenablog.com/entry/2017/12/04/090000#属性
 // https://docs.unity3d.com/ScriptReference/PlayerLoop.Initialization.html
 // https://docs.unity3d.com/ja/2019.3/Manual/BestPracticeUnderstandingPerformanceInUnity1.html
+// https://docs.unity3d.com/ja/current/ScriptReference/MonoBehaviour.html
 
 namespace Unison
 {
@@ -29,6 +30,7 @@ namespace Unison
             updatedPlayerLoop = subSystem.ToArray();
 
             PhysicsOFF();
+            EditorApplication.QueuePlayerLoopUpdate();
         }
 
         public static void PhysicsOFF()
