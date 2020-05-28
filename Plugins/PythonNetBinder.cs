@@ -284,6 +284,7 @@ namespace Unison.Bind
                     }
                 }
             }
+            // TODO: Play, Stop, Goto などのラッパー登録
 
             return _functions;
         }
