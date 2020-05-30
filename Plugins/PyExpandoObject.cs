@@ -12,16 +12,16 @@ namespace Unison.Extensions
     public class PyRPCAttribute : Attribute
     {
         private readonly string m_command;
-        private readonly string m_description;
+        // private readonly string m_description;
 
         public string Command => m_command;
 
-        public string Description => m_description;
+        // public string Description => m_description;
 
-        public PyRPCAttribute(string command, string description)
+        public PyRPCAttribute(string command, string description = "")
         {
             m_command = command;
-            m_description = description;
+            // m_description = description;
         }
     }
 

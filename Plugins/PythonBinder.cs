@@ -23,7 +23,7 @@ namespace Unison.Bind
      * https://mitosuya.net/execute-all-class-in-namespace
      * </summary>
      */
-    public class PythonNetBinder
+    public class PythonBinder
     {
         private static CodeNamespace nameSpace;
 
@@ -44,12 +44,13 @@ namespace Unison.Bind
         #endregion
 
         /// <summary>
-        /// 
+        /// CodeDOM Structure
         /// </summary>
         /// <param name="typeName"></param>
         /// <returns></returns>
-        public static PythonNetBinder Gen()
+        public static PythonBinder Gen()
         {
+            #region File Header
             nameSpace = new CodeNamespace(name: "Client");
             var time = DateTime.Now.ToString("yyyy/MM/dd");
             var comment = new CodeCommentStatement(new CodeComment(_template.Replace("YMD", time)));
@@ -64,31 +65,43 @@ namespace Unison.Bind
             nameSpace.Imports.Add(new CodeNamespaceImport(nameSpace: "Godot"));
             mainClass.BaseTypes.Add(new CodeTypeReference(typeof(Node)));
 #endif
+            #endregion
 
             var assemblies = new HashSet<Assembly>
             {
-                Assembly.GetAssembly(typeof(PythonNetBinder)), Assembly.Load("Assembly-CSharp")
+                Assembly.GetAssembly(typeof(PythonBinder)), Assembly.Load("Assembly-CSharp")
             };
 
             foreach (var assembly in assemblies)
             {
                 foreach (var typeName in assembly.GetExportedTypes())
                 {
+                    #region Fields
+                    
                     var fields =
                         typeName.GetFields(BindingFlags.GetField | BindingFlags.Public | BindingFlags.Instance);
                     foreach (var field in fields)
                     {
                         var variable = new CodeMemberField(field.FieldType.Name, field.Name);
-#if UNITY
-                var codeAttrDecl = new CodeAttributeDeclaration(
-                    "SerializeField",
-                    new CodeAttributeArgument(new CodePrimitiveExpression(false)));
-                variable.CustomAttributes.Add(codeAttrDecl);
+#if UNITY_EDITOR
+                        var codeAttrDecl = new CodeAttributeDeclaration(
+                            "SerializeField",
+                            new CodeAttributeArgument(new CodePrimitiveExpression(false)));
+                        variable.CustomAttributes.Add(codeAttrDecl);
+#elif GODOT
+                        [Export]
+                        public int Speed = 400; // How fast the player will move (pixels/sec).
+
+                        [Signal]
+                        public delegate void Hit();
 #endif
                         mainClass.Members.Add(variable);
                     }
+                    
+                    #endregion
 
-
+                    #region Method
+                    
                     var methods = typeName.GetMethods(BindingFlags.Public | BindingFlags.NonPublic |
                                                       BindingFlags.Instance | BindingFlags.Static |
                                                       BindingFlags.DeclaredOnly);
@@ -131,16 +144,42 @@ namespace Unison.Bind
 
                         mainClass.Members.Add(mainMethod);
                     }
+                    
+                    #endregion
                 }
             }
-            return new PythonNetBinder();
+            return new PythonBinder();
         }
-
+        
         /// <summary>
-        /// 
+        /// CodeDOM to C#
         /// </summary>
         /// <param name="fileName"></param>
-        void Compile(string fileName)
+        /// <param name="type"></param>
+        private void ToCode(string fileName, string type = "C#")
+        {
+            var codeText = new StringBuilder();
+            using (var codeWriter = new StringWriter(codeText))
+            {
+                var compilerOptions = new CodeGeneratorOptions
+                {
+                    IndentString = "    ", BracingStyle = type
+                };
+                CodeDomProvider.CreateProvider(type)
+                    .GenerateCodeFromNamespace(nameSpace, codeWriter, compilerOptions);
+            }
+
+            using (var writer = new StreamWriter(fileName))
+            {
+                writer.Write(codeText);
+            }
+        }
+        
+        /// <summary>
+        /// CodeDOM to Assemply
+        /// </summary>
+        /// <param name="fileName"></param>
+        public void Compile(string fileName)
         {
             if (fileName.EndsWith(".cs"))
             {
@@ -160,8 +199,6 @@ namespace Unison.Bind
             codeCompileUnit.ReferencedAssemblies.Add("UnityEditor.dll");
 #elif GODOT
             codeCompileUnit.ReferencedAssemblies.Add("GodotSharp.dll");
-#elif INHOUSE
-            codeCompileUnit.ReferencedAssemblies.Add("");
 #endif
             codeCompileUnit.Namespaces.Add(nameSpace);
 
@@ -177,32 +214,12 @@ namespace Unison.Bind
                 fstring.Close();
             }
             
-
             var result = CodeDomProvider.CreateProvider("C#")
                 .CompileAssemblyFromDom(compileParameters, compilationUnits: snippets);
 
             foreach (var str in result.Output)
             {
                 Console.WriteLine(str);
-            }
-        }
-
-        void ToCode(string fileName, string type = "C#")
-        {
-            var codeText = new StringBuilder();
-            using (var codeWriter = new StringWriter(codeText))
-            {
-                var compilerOptions = new CodeGeneratorOptions
-                {
-                    IndentString = "    ", BracingStyle = type
-                };
-                CodeDomProvider.CreateProvider(type)
-                    .GenerateCodeFromNamespace(nameSpace, codeWriter, compilerOptions);
-            }
-
-            using (var writer = new StreamWriter(fileName))
-            {
-                writer.Write(codeText);
             }
         }
     }
@@ -218,7 +235,7 @@ namespace Unison.Bind
         /// </summary>
         /// <param name="address"></param>
         /// <param name="port"></param>
-        public static void RpcServer(string address, int port)
+        public static void Server(string address, int port)
         {
             GetAttributes();
 
@@ -248,7 +265,7 @@ namespace Unison.Bind
             }
         }
 
-        static void Register(string command, string description, MethodInfo method)
+        private static void Register(string command, string description, MethodInfo method)
         {
             Action<string> action;
 
@@ -259,12 +276,12 @@ namespace Unison.Bind
 
             _functions.Add(action, command);
         }
-        
-        static Dictionary<Action<string>, string> GetAttributes()
+
+        private static Dictionary<Action<string>, string> GetAttributes()
         {
             var assemblies = new HashSet<Assembly>
             {
-                Assembly.GetAssembly(typeof(PythonNetBinder)), Assembly.Load("Assembly-CSharp")
+                Assembly.GetAssembly(typeof(PythonBinder)), Assembly.Load("Assembly-CSharp")
             };
 
             foreach (var assembly in assemblies)
@@ -278,7 +295,7 @@ namespace Unison.Bind
                         {
                             if (attribute is PyRPCAttribute consoleMethod)
                             {
-                                Register(consoleMethod.Command, consoleMethod.Description, method);
+                                Register(consoleMethod.Command, "", method);
                             }
                         }
                     }

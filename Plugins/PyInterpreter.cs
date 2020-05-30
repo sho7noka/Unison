@@ -6,20 +6,9 @@ using Python.Runtime;
 
 namespace Unison
 {
-    internal class Program
-    {
-        public static int Main(string[] args)
-        {
-            var cmd = Environment.GetCommandLineArgs();
-            // PyInterpreter.Set();
-
-            PythonEngine.Initialize();
-            var i = Runtime.Py_Main(cmd.Length, cmd);
-            PythonEngine.Shutdown();
-            return i;
-        }
-    }
-
+    /// <summary>
+    /// 
+    /// </summary>
     public class PyInterpreter
     {
         private static dynamic client;
@@ -30,7 +19,7 @@ namespace Unison
         /// <param name="address"></param>
         /// <param name="port"></param>
         /// <returns></returns>
-        public static dynamic RpcClient(string address, int port)
+        public static dynamic Client(string address, int port)
         {
             using (Py.GIL())
             {
@@ -47,6 +36,7 @@ namespace Unison
         /// <param name="pathToVirtualEnv"></param>
         public static void Set(string pathToVirtualEnv)
         {
+            // interpreter
             Environment.SetEnvironmentVariable("PATH", pathToVirtualEnv, EnvironmentVariableTarget.Process);
             Environment.SetEnvironmentVariable("PYTHONHOME", pathToVirtualEnv,
                 EnvironmentVariableTarget.Process);
@@ -56,9 +46,24 @@ namespace Unison
             PythonEngine.PythonHome = pathToVirtualEnv;
             PythonEngine.PythonPath =
                 Environment.GetEnvironmentVariable("PYTHONPATH", EnvironmentVariableTarget.Process);
+            
+            // set clr_ext path
+            dynamic builtins = PythonEngine.ImportModule("__builtin__");
+            // prepend to sys.path
+            dynamic sys = PythonEngine.ImportModule("sys");
+            var syspath = sys.GetAttr("path");
+            dynamic sitePackages = GetExtraSitePackages();
+            var pySitePackages = builtins.list();
+            
+            foreach (var sitePackage in sitePackages)
+            {
+                pySitePackages.append(sitePackage);
+            }
+            pySitePackages += syspath;
+            sys.SetAttr("path", pySitePackages);
         }
 
-        private static List<string> GetExtraSitePackages()
+        private static IEnumerable<string> GetExtraSitePackages()
         {
             var sitePackages = new List<string>();
             {
@@ -66,32 +71,12 @@ namespace Unison
                 packageSitePackage = packageSitePackage.Replace("\\", "/");
                 sitePackages.Add(packageSitePackage);
             }
+            if (!Directory.Exists("Assets/Python/site-packages")) return sitePackages;
             
-            if (Directory.Exists("Assets/Python/site-packages"))
-            {
-                var projectSitePackages = Path.GetFullPath("Assets/Python/site-packages");
-                projectSitePackages = projectSitePackages.Replace("\\", "/");
-                sitePackages.Add(projectSitePackages);
-            }
-
+            var projectSitePackages = Path.GetFullPath("Assets/Python/site-packages");
+            projectSitePackages = projectSitePackages.Replace("\\", "/");
+            sitePackages.Add(projectSitePackages);
             return sitePackages;
-        }
-
-        private static void clr_ext()
-        {
-            dynamic builtins = PythonEngine.ImportModule("__builtin__");
-            // prepend to sys.path
-            dynamic sys = PythonEngine.ImportModule("sys");
-            dynamic syspath = sys.GetAttr("path");
-            dynamic sitePackages = GetExtraSitePackages();
-            dynamic pySitePackages = builtins.list();
-            foreach (var sitePackage in sitePackages)
-            {
-                pySitePackages.append(sitePackage);
-            }
-
-            pySitePackages += syspath;
-            sys.SetAttr("path", pySitePackages);
         }
     }
 }
