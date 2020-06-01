@@ -1,15 +1,19 @@
 # Unison
-Unison is a python game development solution for C# (Unity, Godot and .NET)
+Unison is a python game development solution for C# Script (Unity, Godot and .NET)
 which extend on [pythonnet](http://pythonnet.github.io/).
+
 
 ## About
 In a C# scripted game engine, the amount of friction between programmers and artists is significant.
 
 By brokering Python, we provide artists and game designers with the ability to solve complex game development problems.
 
+It provides a simple bi-directional IDL between asset and client and runtime, just like building REST or RPC between client and server.
+
 For more general uses of tables extracted from databases and spreadsheets, such as serialization, ORM, and dynamic proxies, 
 
 you can use Consider [T4](https://docs.microsoft.com/ja-jp/visualstudio/modeling/code-generation-and-t4-text-templates?view=vs-2019) or [LLBLGen](https://www.llblgen.com/).
+
 
 ## Installation
 * pypi: `pip install clr_ext`
@@ -25,17 +29,17 @@ Packages/manifest.json for Unity(optional).[document](https://docs.unity3d.com/P
 }
 ```
 
+
 ### embeded Client on Lightweight Language
-ゲームクライアント上でPythonのような軽量スクリプト言語を組み込むと便利な機能に
+Some of the features that can be useful in real-world development when incorporating a lightweight scripting language such as Python on a game client are
 
-以下のようなものがあります。特に保守期間の長いサービスを提供する上で工数削減を期待できます。
+They include the following. It can be expected to reduce development man-hours, especially in providing services with long maintenance periods.
 
-- シーン遷移を含むエディターでのオートゲームプレイとテスト
-- アセット作成ツール(Maya, Photoshop等)とネイティブ相互作用
-- 持続可能なサービスのためのエンジン内アセットの継続的なメンテナンス
+- Auto gameplay and testing in the editor, including scene transitions
+- Native interaction with asset creation tools (Maya, Photoshop, etc.)
+- Ongoing maintenance of in-engine assets for sustainable service
 
-
-インターフェース定義
+interface definition
 ```c#
 using UnityEngine;
 using Unison.Extensions;
@@ -49,7 +53,7 @@ public class TestScript {
 }
 ```
 
-RPCサーバの開始
+start to RPC server
 ```c#
 using UnityEditor;
 using Unison;
@@ -63,7 +67,7 @@ public class EditorPresenter
 }
 ```
 
-RPCクライアントからアクセス
+get RPC client
 ```python
 import clr_ext as clr
 
@@ -73,27 +77,31 @@ unity.update_scene()
 unity.Stop()
 ```
 
+
 ### Sourcecode as a Asset
-xml,csv,jsonあるいは独自ファイルフォーマットを仲介して、アセット周辺のマスターデータを生成するニーズには
+For the need to generate master data around assets by intermediating XML, CSV, JSON, proprietary file formats, etc.
 
-以下のようなものがあります。プログラマーの工数が見込めない状況でアセットの細かい挙動を制御する際に便利です。
+They include the following. This is especially useful for artists controlling the detailed behavior of assets in situations where the programmer's time is not available.
 
-- シェーダ : マテリアル/パーティクル
-- イベント : 物理エンジン/オーディオ/コリジョン
-- レベル : 地形、天候、草木
-- その他 : サンドボックス、ランタイムコマンドなど
+- Shader : Material, Particle
+- Event : Physics, Audio, Collision
+- Level : Landscape、Weather、Grass or Tree
+- Other : SandBox、RuntimeCommand
 
-パラメータの生成
+make parameters
 ```python
 import clr_ext.generate as gen
 
 gen.gen_cs()
 ```
 
-
+gen master data
 ```python
+import clr_ext.generate as gen
+
 
 ```
 
-#### ライセンス
+
+#### License
 [MIT](./License.md)

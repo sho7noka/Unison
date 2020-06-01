@@ -30,6 +30,15 @@ def optimize(code):
 
 
 def console_app(code, file_name):
+    """
+
+    Args:
+        code: 
+        file_name: 
+
+    Returns:
+
+    """
     template = Template(dedent("""
     using System;
     using Python.Runtime;
@@ -59,6 +68,7 @@ def console_app(code, file_name):
 
 def script(code, file_name):
     """
+    https://www.stompyrobot.uk/tools/srdebugger/documentation/#console-1
 
     Args:
         file_name:  
